@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ربط GitHub مع Netlify - نظام محاسبة الشحن</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 28px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .tutorial {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .tutorial-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .step {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-right: 4px solid var(--secondary);
+        }
+        
+        .step-number {
+            background: var(--secondary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .screenshot {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            margin: 5px;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary);
+        }
+        
+        .btn-github {
+            background-color: #333;
+            color: white;
+        }
+        
+        .btn-netlify {
+            background-color: #15847b;
+            color: white;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-ship"></i>
+                    <h1>ربط GitHub مع Netlify - نظام محاسبة الشحن</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active">الرئيسية</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Netlify</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="tutorial">
+                <h2>كيف تربط GitHub مع Netlify لنشر موقعك مجاناً</h2>
+                <p>سأشرح لك خطوة بخطوة كيفية رفع مشروعك إلى GitHub ثم ربطه مع Netlify للحصول على موقع ويب مجاني.</p>
+                
+                <div class="tutorial-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>أنشئ حساب GitHub</h3>
+                        <p>اذهب إلى <a href="https://github.com/" target="_blank">github.com</a> وأنشئ حساباً مجانياً.</p>
+                        <a href="https://github.com/signup" class="btn btn-github">إنشاء حساب GitHub</a>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>أنشئ مستودعاً جديداً</h3>
+                        <p>بعد تسجيل الدخول، انقر على "New repository" لإنشاء مستودع جديد لمشروعك.</p>
+                        <div class="code-block">
+            // اسم المستودع: shipping-accounting<br>
+            // نوعه: Public<br>
+            // اختر: Add a README file
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>ارفع ملفاتك</h3>
+                        <p>انقر على "Add file" ثم "Upload files" لرفع ملف index.html وملفاتك الأخرى.</p>
+                        <div class="code-block">
+// يمكنك رفع الملفات عن طريق السحب والإفلات<br>
+// أو استخدام الأمر git push إذا كنت تعرف Git
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>انسخ عنوان المستودع</h3>
+                        <p>انسخ عنوان URL الخاص بمستودعك من شريط العنوان في المتصفح.</p>
+                        <div class="code-block">
+https://github.com/اسم-المستخدم/اسم-المستودع
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <h3>سجل الدخول إلى Netlify</h3>
+                        <p>اذهب إلى <a href="https://www.netlify.com/" target="_blank">netlify.com</a> وسجل الدخول بحسابك.</p>
+                        <a href="https://app.netlify.com/signup" class="btn btn-netlify">إنشاء حساب Netlify</a>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <h3>استورد من GitHub</h3>
+                        <p>انقر على "Import from Git" ثم اختر GitHub وأعط الصلاحيات اللازمة.</p>
+                        <p>اختر المستودع الذي أنشأته من القائمة.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <h3>اضبط إعدادات النشر</h3>
+                        <p>اتبع التعليمات واضغط على "Deploy site" وسيتم نشر موقعك تلقائياً.</p>
+                        <p>ستحصل على رابط مجاني مثل: your-site-name.netlify.app</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">8</div>
+                        <h3>التحديثات التلقائية</h3>
+                        <p>الآن أي تحديث ت pushه إلى GitHub سينتقل تلقائياً إلى موقعك على Netlify.</p>
+                    </div>
+                </div>
+                
+                <h3>نصائح مهمة:</h3>
+                <ul>
+                    <li>تأكد من أن المستودع عام (Public) للحساب المجاني</li>
+                    <li>اسم الملف الرئيسي يجب أن يكون index.html</li>
+                    <li>يمكنك إضافة نطاق مخصص لاحقاً إذا أردت</li>
+                </ul>
+                
+                <div style="text-align: center; margin: 30px 0;">
+                    <a href="https://github.com/new" class="btn btn-primary">ابدأ الآن بأنشئ مستودع جديد</a>
+                    <a href="https://app.netlify.com/" class="btn btn-netlify">اذهب إلى Netlify</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 نظام محاسبة الشحن - جميع الحقوق محفوظة</p>
+            <p>تم إنشاء هذا الدليل لمساعدة المبتدئين على نشر مواقعهم مجاناً</p>
+        </div>
+    </footer>
+
+    <script>
+        // يمكن إضافة JavaScript هنا للتفاعلية
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('تم تحميل دليل الربط بين GitHub و Netlify');
+            
+            // إضافة تأثيرات بسيطة للزرور
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseover', function() {
+                    this.style.transform = 'translateY(-3px)';
+                    this.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+                });
+                
+                btn.addEventListener('mouseout', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
